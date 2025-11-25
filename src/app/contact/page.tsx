@@ -42,17 +42,23 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-background pt-40 pb-24 flex flex-col justify-center">
       <div className="container mx-auto px-4 max-w-5xl">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-24"
+          className="mb-24 relative"
         >
-           <h1 className="text-7xl md:text-[10vw] font-serif font-black uppercase tracking-tighter leading-none mb-4 mix-blend-difference">
-              Let&apos;s <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-foreground">Connect</span>
-            </h1>
+          {/* Base Layer */}
+          <h1 className="absolute inset-0 text-7xl md:text-[10vw] font-serif font-black uppercase tracking-tighter leading-none mb-4 text-foreground opacity-60 pointer-events-none select-none">
+            Let&apos;s <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-foreground">Connect</span>
+          </h1>
+
+          {/* Blend Layer */}
+          <h1 className="text-7xl md:text-[10vw] font-serif font-black uppercase tracking-tighter leading-none mb-4 mix-blend-difference relative z-10">
+            Let&apos;s <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-foreground">Connect</span>
+          </h1>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
@@ -67,17 +73,17 @@ export default function ContactPage() {
                     <FormItem className="relative">
                       <FormLabel className="text-xl md:text-2xl uppercase tracking-widest font-bold text-muted-foreground absolute -top-8 left-0">Name</FormLabel>
                       <FormControl>
-                        <Input 
-                          placeholder="Your Name" 
-                          {...field} 
-                          className="bg-transparent border-b-2 border-foreground/20 border-t-0 border-x-0 rounded-none px-0 py-8 text-3xl md:text-5xl font-serif focus-visible:ring-0 focus-visible:border-primary placeholder:text-foreground/10 h-auto transition-all" 
+                        <Input
+                          placeholder="Your Name"
+                          {...field}
+                          className="bg-transparent border-b-2 border-foreground/20 border-t-0 border-x-0 rounded-none px-0 py-8 text-3xl md:text-5xl font-serif focus-visible:ring-0 focus-visible:border-primary placeholder:text-foreground/10 h-auto transition-all"
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-                
+
                 <FormField
                   control={form.control}
                   name="email"
@@ -85,10 +91,10 @@ export default function ContactPage() {
                     <FormItem className="relative">
                       <FormLabel className="text-xl md:text-2xl uppercase tracking-widest font-bold text-muted-foreground absolute -top-8 left-0">Email</FormLabel>
                       <FormControl>
-                        <Input 
-                          placeholder="your@email.com" 
-                          {...field} 
-                          className="bg-transparent border-b-2 border-foreground/20 border-t-0 border-x-0 rounded-none px-0 py-8 text-3xl md:text-5xl font-serif focus-visible:ring-0 focus-visible:border-primary placeholder:text-foreground/10 h-auto transition-all" 
+                        <Input
+                          placeholder="your@email.com"
+                          {...field}
+                          className="bg-transparent border-b-2 border-foreground/20 border-t-0 border-x-0 rounded-none px-0 py-8 text-3xl md:text-5xl font-serif focus-visible:ring-0 focus-visible:border-primary placeholder:text-foreground/10 h-auto transition-all"
                         />
                       </FormControl>
                       <FormMessage />
@@ -104,10 +110,10 @@ export default function ContactPage() {
                   <FormItem className="relative">
                     <FormLabel className="text-xl md:text-2xl uppercase tracking-widest font-bold text-muted-foreground absolute -top-8 left-0">Message</FormLabel>
                     <FormControl>
-                      <Textarea 
-                        placeholder="Tell us about your project..." 
-                        className="bg-transparent border-b-2 border-foreground/20 border-t-0 border-x-0 rounded-none px-0 py-4 text-3xl md:text-5xl font-serif focus-visible:ring-0 focus-visible:border-primary placeholder:text-foreground/10 min-h-[200px] resize-none transition-all" 
-                        {...field} 
+                      <Textarea
+                        placeholder="Tell us about your project..."
+                        className="bg-transparent border-b-2 border-foreground/20 border-t-0 border-x-0 rounded-none px-0 py-4 text-3xl md:text-5xl font-serif focus-visible:ring-0 focus-visible:border-primary placeholder:text-foreground/10 min-h-[200px] resize-none transition-all"
+                        {...field}
                       />
                     </FormControl>
                     <FormMessage />

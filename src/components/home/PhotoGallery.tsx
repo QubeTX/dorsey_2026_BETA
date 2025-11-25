@@ -18,16 +18,28 @@ export function PhotoGallery() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-4 space-y-8 relative z-10">
-             <motion.h2 
+            {/* Base Layer */}
+            <motion.h2
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="text-[8vw] lg:text-[5vw] font-serif font-black uppercase tracking-tighter leading-[0.8] text-foreground mix-blend-difference"
+              className="absolute inset-0 text-[8vw] lg:text-[5vw] font-serif font-black uppercase tracking-tighter leading-[0.8] text-foreground opacity-60 pointer-events-none select-none"
             >
               The <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-br from-primary to-transparent">Vibe</span>
             </motion.h2>
-            <motion.p 
+
+            {/* Blend Layer */}
+            <motion.h2
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="text-[8vw] lg:text-[5vw] font-serif font-black uppercase tracking-tighter leading-[0.8] text-foreground mix-blend-difference relative z-10"
+            >
+              The <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-br from-primary to-transparent">Vibe</span>
+            </motion.h2>
+            <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -37,7 +49,7 @@ export function PhotoGallery() {
               Capturing the energy, the soul, and the timeless moments of jazz performance. From intimate clubs to international stages.
             </motion.p>
           </div>
-          
+
           <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-8">
             {photos.map((src, index) => (
               <motion.div

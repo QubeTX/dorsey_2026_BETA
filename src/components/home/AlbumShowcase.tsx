@@ -15,16 +15,22 @@ export function AlbumShowcase() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="max-w-2xl"
+            className="max-w-2xl relative"
           >
-            <h2 className="text-6xl md:text-9xl font-serif font-black uppercase tracking-tighter mb-6 mix-blend-difference">
+            {/* Base Layer */}
+            <h2 className="absolute inset-0 text-6xl md:text-9xl font-serif font-black uppercase tracking-tighter mb-6 text-foreground opacity-60 pointer-events-none select-none">
+              New <span className="text-primary italic font-sans font-normal tracking-normal">Sounds</span>
+            </h2>
+
+            {/* Blend Layer */}
+            <h2 className="text-6xl md:text-9xl font-serif font-black uppercase tracking-tighter mb-6 mix-blend-difference relative z-10">
               New <span className="text-primary italic font-sans font-normal tracking-normal">Sounds</span>
             </h2>
             <p className="text-muted-foreground text-xl font-serif italic pl-2 border-l-2 border-primary">
               The latest sonic journeys from Leon Lee Dorsey.
             </p>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -32,8 +38,8 @@ export function AlbumShowcase() {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="hidden md:block"
           >
-            <Link 
-              href="/music" 
+            <Link
+              href="/music"
               className="text-lg font-bold uppercase tracking-widest hover:text-primary transition-colors group flex items-center gap-2"
             >
               View All Music
@@ -51,7 +57,7 @@ export function AlbumShowcase() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.15, duration: 0.8, ease: "circOut" }}
             >
-              <VinylCard 
+              <VinylCard
                 title={album.title}
                 artist={album.artist}
                 year={album.year}

@@ -12,9 +12,15 @@ export default function MusicPage() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-24"
+          className="text-center mb-24 relative"
         >
-          <h1 className="text-[12vw] font-serif font-black uppercase tracking-tighter leading-[0.8] mb-8 mix-blend-difference">
+          {/* Base Layer */}
+          <h1 className="absolute inset-0 text-[12vw] font-serif font-black uppercase tracking-tighter leading-[0.8] mb-8 text-foreground opacity-60 pointer-events-none select-none">
+            Music <span className="text-transparent bg-clip-text bg-gradient-to-b from-primary to-transparent">Store</span>
+          </h1>
+
+          {/* Blend Layer */}
+          <h1 className="text-[12vw] font-serif font-black uppercase tracking-tighter leading-[0.8] mb-8 mix-blend-difference relative z-10">
             Music <span className="text-transparent bg-clip-text bg-gradient-to-b from-primary to-transparent">Store</span>
           </h1>
           <p className="text-xl md:text-3xl text-muted-foreground font-serif italic max-w-4xl mx-auto">
@@ -39,8 +45,8 @@ export default function MusicPage() {
                 link={album.link}
               />
               <div className="mt-8 text-center">
-                 <p className="text-lg font-bold uppercase mb-2">$9.99</p>
-                 {/* Add buy buttons here if needed */}
+                <p className="text-lg font-bold uppercase mb-2">$9.99</p>
+                {/* Add buy buttons here if needed */}
               </div>
             </motion.div>
           ))}

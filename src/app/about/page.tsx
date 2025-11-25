@@ -9,14 +9,25 @@ import Link from "next/link";
 export default function AboutPage() {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 1000], [0, 200]);
-  
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section with Text Masking */}
       <section className="relative pt-40 pb-32 bg-background overflow-hidden">
         <div className="container mx-auto px-4 relative z-10">
           <div className="relative">
-            <motion.h1 
+            {/* Base Layer */}
+            <motion.h1
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              className="absolute inset-0 flex items-center justify-center text-[15vw] font-serif font-black uppercase tracking-tighter leading-[0.8] text-center text-foreground opacity-60 z-10 pointer-events-none select-none"
+            >
+              The <br /> Legend
+            </motion.h1>
+
+            {/* Blend Layer */}
+            <motion.h1
               initial={{ opacity: 0, y: 100 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
@@ -24,25 +35,25 @@ export default function AboutPage() {
             >
               The <br /> Legend
             </motion.h1>
-            
+
             {/* Masked Video/Image Background for Text Effect (Simulated with absolute positioning behind) */}
             {/* Actually, mix-blend-difference on white text over an image works great too. */}
-            
-            <motion.div 
+
+            <motion.div
               style={{ y: y1 }}
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] aspect-video z-10 grayscale opacity-50"
             >
-               <Image
-                 src="/images/hero-1.jpg"
-                 alt="Background"
-                 fill
-                 className="object-cover"
-               />
+              <Image
+                src="/images/hero-1.jpg"
+                alt="Background"
+                fill
+                className="object-cover"
+              />
             </motion.div>
           </div>
-          
+
           <div className="max-w-4xl mx-auto mt-20 text-center relative z-20">
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
@@ -60,32 +71,32 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
             {/* Image Column */}
             <div className="lg:col-span-5 space-y-20">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
                 className="relative aspect-[3/4] w-full bg-black rounded-sm overflow-hidden shadow-2xl rotate-3"
               >
-                <Image 
-                  src="/images/hero-3.jpg" 
-                  alt="Leon Lee Dorsey Portrait" 
-                  fill 
+                <Image
+                  src="/images/hero-3.jpg"
+                  alt="Leon Lee Dorsey Portrait"
+                  fill
                   className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 />
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="relative aspect-square w-full bg-black rounded-sm overflow-hidden shadow-xl -rotate-3"
               >
-                 <Image 
-                  src="/images/hero-4.jpg" 
-                  alt="Performance" 
-                  fill 
+                <Image
+                  src="/images/hero-4.jpg"
+                  alt="Performance"
+                  fill
                   className="object-cover sepia hover:sepia-0 transition-all duration-700"
                 />
               </motion.div>
@@ -104,7 +115,7 @@ export default function AboutPage() {
                 </p>
               </motion.div>
 
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -114,7 +125,7 @@ export default function AboutPage() {
                 <p>
                   As a legendary bassist, composer, and arranger, <span className="font-bold text-primary">Leon Lee Dorsey</span>, born in 1958 in Pittsburgh, has performed with jazz luminaries that include: <em className="text-foreground font-serif">Dizzy Gillespie, Wynton Marsalis, Freddie Hubbard, John Lewis, Kenny Clarke, Jon Hendricks, Gloria Lynn, Harry &ldquo;Sweets&rdquo; Edison, Dorothy Donegan, Stanley Turrentine, George Benson, Ellis Marsalis, Neena Freelon</em> and <em className="text-foreground font-serif">Terumasa Hino</em>.
                 </p>
-                
+
                 <p>
                   He has also performed in big bands with the Smithsonian Jazz Masterworks Orchestra, Benny Carter, the Duke Ellington Orchestra and Charlie Persip&apos;s Superband. Other career highlights include working with Frank Sinatra at Carnegie Hall, guest appearances at the White House under Presidents Reagan and Clinton and performing with Joe Williams and the operatic diva Marilyn Horne.
                 </p>
@@ -122,16 +133,16 @@ export default function AboutPage() {
                 <Separator className="my-12 bg-primary/30" />
 
                 <h3 className="text-4xl font-serif font-bold text-foreground uppercase tracking-tighter mb-8">Education & Legacy</h3>
-                
+
                 <p>
                   Completing his Doctor of Music (DMA) in Double Bass Performance at Stony Brook University Graduate School (2014-2016), Dorsey holds Master&apos;s Degrees from the University of Wisconsin-Madison and the Manhattan School of Music, and a Double Degree in Music from Oberlin College, specializing in Classical Double Bass and Jazz Performance.
                 </p>
 
                 <p>
-                   Currently serving as an <span className="font-bold text-primary">Associate Professor of Music at Berklee College of Music</span>, Mr. Dorsey has also held teaching positions at Queens College (NYC), the University of Pittsburgh, and Oberlin College Conservatory of Music. He maintains that jazz requires &ldquo;the highest level of knowledge, study, and training across the board,&rdquo; reflecting his deep commitment to both performance and education in the genre.
+                  Currently serving as an <span className="font-bold text-primary">Associate Professor of Music at Berklee College of Music</span>, Mr. Dorsey has also held teaching positions at Queens College (NYC), the University of Pittsburgh, and Oberlin College Conservatory of Music. He maintains that jazz requires &ldquo;the highest level of knowledge, study, and training across the board,&rdquo; reflecting his deep commitment to both performance and education in the genre.
                 </p>
               </motion.div>
-              
+
               <div className="pt-12">
                 <Button asChild size="lg" variant="outline" className="rounded-full border-2 text-xl px-10 py-8 hover:bg-foreground hover:text-background uppercase tracking-widest font-bold">
                   <Link href="/contact">Get in Touch</Link>
