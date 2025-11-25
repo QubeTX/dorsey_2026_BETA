@@ -4,12 +4,13 @@ This is the modern rebuild of the Leon Lee Dorsey website, migrating from Square
 
 ## Tech Stack
 
-- **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS v4
+- **Framework**: Next.js 16.0.4 (App Router)
+- **Language**: TypeScript 5 (strict mode)
+- **UI Library**: React 19
+- **Styling**: Tailwind CSS v4 (via @tailwindcss/postcss)
 - **Animation**: Framer Motion (Parallax, Magnetic, Page Transitions)
 - **Scrolling**: Lenis (Smooth Scroll)
-- **Components**: shadcn/ui
+- **Components**: shadcn/ui (New York style) with Radix UI primitives
 - **Icons**: Lucide React
 - **Forms**: React Hook Form + Zod
 
