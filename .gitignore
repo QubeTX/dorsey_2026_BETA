@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Legacy content with large audio files
+OLD_DORSEY/GITIGNORED_DORSEY/
+
+# Large media files (should not be in git)
+*.wav
+*.mp3
+*.zip
+*.flac
+*.aiff
+*.m4a
