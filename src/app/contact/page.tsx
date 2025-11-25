@@ -48,7 +48,7 @@ export default function ContactPage() {
           className="mb-24"
         >
            <h1 className="text-7xl md:text-[10vw] font-serif font-black uppercase tracking-tighter leading-none mb-4 mix-blend-difference">
-              Let's <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-foreground">Connect</span>
+              Let&apos;s <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-foreground">Connect</span>
             </h1>
         </motion.div>
 

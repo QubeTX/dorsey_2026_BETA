@@ -22,7 +22,7 @@ export default function HowItsMadePage() {
             className="mb-16 text-center"
           >
             <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-4">
-              How It's <span className="text-primary">Made</span>
+              How It&apos;s <span className="text-primary">Made</span>
             </h1>
             <p className="text-xl text-muted-foreground font-serif italic max-w-2xl mx-auto">
               Behind the scenes in the studio and on the road.
@@ -52,4 +52,3 @@ export default function HowItsMadePage() {
     </div>
   );
 }
-

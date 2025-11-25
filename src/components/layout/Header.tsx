@@ -69,18 +69,17 @@ export function Header() {
                         </NavigationMenuContent>
                       </div>
                     ) : (
-                      <Link href={item.href}>
-                        {/* @next-codemod-error This Link previously used the now removed `legacyBehavior` prop, and has a child that might not be an anchor. The codemod bailed out of lifting the child props to the Link. Check that the child component does not render an anchor, and potentially move the props manually to Link. */
-                        }
-                        <NavigationMenuLink
+                      <NavigationMenuLink asChild>
+                        <Link
+                          href={item.href}
                           className={cn(
                             "bg-transparent hover:bg-transparent text-sm font-medium uppercase tracking-wider h-auto py-2 px-4 rounded-full hover:text-primary transition-colors block",
                             pathname === item.href && "text-primary font-bold"
                           )}
                         >
                           {item.name}
-                        </NavigationMenuLink>
-                      </Link>
+                        </Link>
+                      </NavigationMenuLink>
                     )}
                   </Magnetic>
                 </NavigationMenuItem>

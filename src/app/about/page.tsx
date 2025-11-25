@@ -112,11 +112,11 @@ export default function AboutPage() {
                 className="space-y-8"
               >
                 <p>
-                  As a legendary bassist, composer, and arranger, <span className="font-bold text-primary">Leon Lee Dorsey</span>, born in 1958 in Pittsburgh, has performed with jazz luminaries that include: <em className="text-foreground font-serif">Dizzy Gillespie, Wynton Marsalis, Freddie Hubbard, John Lewis, Kenny Clarke, Jon Hendricks, Gloria Lynn, Harry "Sweets" Edison, Dorothy Donegan, Stanley Turrentine, George Benson, Ellis Marsalis, Neena Freelon</em> and <em className="text-foreground font-serif">Terumasa Hino</em>.
+                  As a legendary bassist, composer, and arranger, <span className="font-bold text-primary">Leon Lee Dorsey</span>, born in 1958 in Pittsburgh, has performed with jazz luminaries that include: <em className="text-foreground font-serif">Dizzy Gillespie, Wynton Marsalis, Freddie Hubbard, John Lewis, Kenny Clarke, Jon Hendricks, Gloria Lynn, Harry &ldquo;Sweets&rdquo; Edison, Dorothy Donegan, Stanley Turrentine, George Benson, Ellis Marsalis, Neena Freelon</em> and <em className="text-foreground font-serif">Terumasa Hino</em>.
                 </p>
                 
                 <p>
-                  He has also performed in big bands with the Smithsonian Jazz Masterworks Orchestra, Benny Carter, the Duke Ellington Orchestra and Charlie Persip's Superband. Other career highlights include working with Frank Sinatra at Carnegie Hall, guest appearances at the White House under Presidents Reagan and Clinton and performing with Joe Williams and the operatic diva Marilyn Horne.
+                  He has also performed in big bands with the Smithsonian Jazz Masterworks Orchestra, Benny Carter, the Duke Ellington Orchestra and Charlie Persip&apos;s Superband. Other career highlights include working with Frank Sinatra at Carnegie Hall, guest appearances at the White House under Presidents Reagan and Clinton and performing with Joe Williams and the operatic diva Marilyn Horne.
                 </p>
 
                 <Separator className="my-12 bg-primary/30" />
@@ -124,11 +124,11 @@ export default function AboutPage() {
                 <h3 className="text-4xl font-serif font-bold text-foreground uppercase tracking-tighter mb-8">Education & Legacy</h3>
                 
                 <p>
-                  Completing his Doctor of Music (DMA) in Double Bass Performance at Stony Brook University Graduate School (2014-2016), Dorsey holds Master's Degrees from the University of Wisconsin-Madison and the Manhattan School of Music, and a Double Degree in Music from Oberlin College, specializing in Classical Double Bass and Jazz Performance.
+                  Completing his Doctor of Music (DMA) in Double Bass Performance at Stony Brook University Graduate School (2014-2016), Dorsey holds Master&apos;s Degrees from the University of Wisconsin-Madison and the Manhattan School of Music, and a Double Degree in Music from Oberlin College, specializing in Classical Double Bass and Jazz Performance.
                 </p>
 
                 <p>
-                   Currently serving as an <span className="font-bold text-primary">Associate Professor of Music at Berklee College of Music</span>, Mr. Dorsey has also held teaching positions at Queens College (NYC), the University of Pittsburgh, and Oberlin College Conservatory of Music. He maintains that jazz requires "the highest level of knowledge, study, and training across the board," reflecting his deep commitment to both performance and education in the genre.
+                   Currently serving as an <span className="font-bold text-primary">Associate Professor of Music at Berklee College of Music</span>, Mr. Dorsey has also held teaching positions at Queens College (NYC), the University of Pittsburgh, and Oberlin College Conservatory of Music. He maintains that jazz requires &ldquo;the highest level of knowledge, study, and training across the board,&rdquo; reflecting his deep commitment to both performance and education in the genre.
                 </p>
               </motion.div>
               

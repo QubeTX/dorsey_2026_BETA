@@ -24,7 +24,7 @@ const releases = [
     title: "'Blues on Top' - A Masterclass in Swing",
     date: "June 17, 2023",
     source: "Review",
-    excerpt: "A classic piano trio sound, this driving straight ahead set is a bad ass swinger that clears the dross from the palette in no time flat.",
+    excerpt: "A classic piano trio sound, this driving straight ahead set is a hard-swinging masterclass that clears the palette in no time flat.",
     image: "/images/hero-3.jpg",
     link: "#",
   },

@@ -25,7 +25,7 @@ export const albums = [
     title: "Blues On Top",
     year: "2022",
     artist: "Leon Lee Dorsey, Mike Clark, Mike LeDonne",
-    description: "Driving straight ahead set that is a bad ass swinger. A classic piano trio sound.",
+    description: "Driving straight ahead set that is a hard-swinging classic. A classic piano trio sound.",
     image: "/images/hero-3.jpg", // Placeholder
     link: "/music",
   },
