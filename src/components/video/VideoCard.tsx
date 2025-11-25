@@ -21,6 +21,7 @@ export function VideoCard({ title, description, platform, id }: VideoCardProps) 
           className="absolute top-0 left-0 w-full h-full"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
+          loading="lazy"
           title={title}
         />
       </div>

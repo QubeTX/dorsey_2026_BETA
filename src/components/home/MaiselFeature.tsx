@@ -9,10 +9,6 @@ import { Button } from "@/components/ui/button";
 export function MaiselFeature() {
   return (
     <section className="py-32 bg-foreground text-background relative overflow-hidden">
-      <div className="absolute inset-0 opacity-10 pointer-events-none mix-blend-soft-light">
-         {/* Grain/Texture overlay */}
-         <svg className="w-full h-full"><filter id="noise-maisel"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(#noise-maisel)"/></svg>
-      </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">

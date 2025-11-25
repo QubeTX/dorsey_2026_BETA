@@ -16,14 +16,15 @@ export function CustomCursor() {
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX - 8);
       cursorY.set(e.clientY - 8);
-      if (!isVisible) setIsVisible(true);
+      setIsVisible(true);
     };
 
     window.addEventListener("mousemove", moveCursor);
     return () => {
       window.removeEventListener("mousemove", moveCursor);
     };
-  }, [cursorX, cursorY, isVisible]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <motion.div

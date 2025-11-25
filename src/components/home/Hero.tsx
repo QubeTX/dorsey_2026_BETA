@@ -13,15 +13,6 @@ export function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-background text-foreground">
 
-      {/* Noise Overlay */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none z-50 mix-blend-overlay">
-        <svg className="w-full h-full">
-          <filter id="noise">
-            <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" />
-          </filter>
-          <rect width="100%" height="100%" filter="url(#noise)" />
-        </svg>
-      </div>
 
       {/* Marquee Top - Skewed */}
       <motion.div
@@ -91,7 +82,6 @@ export function Hero() {
               alt="Leon Lee Dorsey"
               fill
               className="object-cover"
-              priority
             />
           </motion.div>
 
@@ -104,7 +94,6 @@ export function Hero() {
               alt="Performance"
               fill
               className="object-cover"
-              priority
             />
           </motion.div>
 

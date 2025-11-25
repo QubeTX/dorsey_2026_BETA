@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface MarqueeProps {
@@ -16,12 +17,15 @@ export function Marquee({
   direction = "left",
   speed = 20,
 }: MarqueeProps) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { margin: "100px" });
+
   return (
-    <div className={cn("flex overflow-hidden whitespace-nowrap", className)}>
+    <div ref={ref} className={cn("flex overflow-hidden whitespace-nowrap", className)}>
       <motion.div
         className="flex min-w-full shrink-0 gap-4 py-4"
         initial={{ x: direction === "left" ? 0 : "-100%" }}
-        animate={{ x: direction === "left" ? "-100%" : 0 }}
+        animate={isInView ? { x: direction === "left" ? "-100%" : 0 } : {}}
         transition={{
           repeat: Infinity,
           ease: "linear",
