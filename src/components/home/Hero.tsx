@@ -33,7 +33,13 @@ export function Hero() {
 
           {/* Main Typography - Massive & Overlapping */}
           {/* Base Layer - Visibility Safety */}
-          <motion.div style={{ y: textY }} className="absolute inset-0 z-20 flex flex-col justify-center items-center text-center text-foreground opacity-60 pointer-events-none select-none">
+          <motion.div
+            style={{
+              y: textY,
+              textShadow: '0 0 60px rgba(255,255,255,0.8), 0 0 120px rgba(255,255,255,0.4)'
+            }}
+            className="absolute inset-0 z-20 flex flex-col justify-center items-center text-center text-foreground opacity-80 pointer-events-none select-none"
+          >
             <motion.h1
               initial={{ opacity: 0, y: 100 }}
               animate={{ opacity: 1, y: 0 }}
@@ -53,7 +59,10 @@ export function Hero() {
           </motion.div>
 
           {/* Top Layer - Blend Effect */}
-          <motion.div style={{ y: textY }} className="relative z-30 text-center mix-blend-difference text-background">
+          <motion.div
+            style={{ y: textY }}
+            className="relative z-30 text-center mix-blend-difference text-background"
+          >
             <motion.h1
               initial={{ opacity: 0, y: 100 }}
               animate={{ opacity: 1, y: 0 }}
