@@ -9,6 +9,12 @@ export function Hero() {
   const y1 = useTransform(scrollY, [0, 1000], [0, 200]);
   const y2 = useTransform(scrollY, [0, 1000], [0, -150]);
   const textY = useTransform(scrollY, [0, 500], [0, 100]);
+  // These shadow presets keep the hero lockup readable on top of the photography layers.
+  // The first glow lifts the base layer while the second adds a darker edge for the blend layer.
+  const baseGlow =
+    "0 0 60px rgba(255,255,255,0.85), 0 0 120px rgba(255,255,255,0.55)";
+  const contrastShadow =
+    "0 0 35px rgba(0,0,0,0.55), 0 0 110px rgba(0,0,0,0.7)";
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-background text-foreground">
@@ -30,15 +36,18 @@ export function Hero() {
 
       <div className="container mx-auto px-4 relative z-20">
         <div className="relative h-[60vh] md:h-[80vh] flex flex-col justify-center items-center">
+          {/* This soft gradient wash sits directly behind the lettering to raise contrast. */}
+          {/* It ensures the "LEON DORSEY" header keeps its full weight even when images overlap. */}
+          <div className="pointer-events-none absolute inset-x-0 top-1/4 mx-auto h-[45vh] w-[85vw] max-w-5xl rounded-[999px] bg-gradient-to-b from-background/95 via-background/70 to-transparent blur-3xl opacity-95" />
 
           {/* Main Typography - Massive & Overlapping */}
           {/* Base Layer - Visibility Safety */}
           <motion.div
             style={{
               y: textY,
-              textShadow: '0 0 60px rgba(255,255,255,0.8), 0 0 120px rgba(255,255,255,0.4)'
+              textShadow: baseGlow,
             }}
-            className="absolute inset-0 z-20 flex flex-col justify-center items-center text-center text-foreground opacity-80 pointer-events-none select-none"
+            className="absolute inset-0 z-20 flex flex-col justify-center items-center text-center text-foreground opacity-95 pointer-events-none select-none"
           >
             <motion.h1
               initial={{ opacity: 0, y: 100 }}
@@ -60,7 +69,7 @@ export function Hero() {
 
           {/* Top Layer - Blend Effect */}
           <motion.div
-            style={{ y: textY }}
+            style={{ y: textY, textShadow: contrastShadow }}
             className="relative z-30 text-center mix-blend-difference text-background"
           >
             <motion.h1
