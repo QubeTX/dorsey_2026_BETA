@@ -1,10 +1,10 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { ChevronRight, Menu, X } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -18,117 +18,128 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { navigation } from "@/lib/navigation";
-import { Magnetic } from "@/components/ui/Magnetic";
 
 export function Header() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 p-4 md:p-6 pointer-events-none flex justify-between items-start md:items-center">
-      {/* Logo - Top Left */}
-      <Magnetic>
-        <Link 
-          href="/" 
-          className="pointer-events-auto bg-background/80 backdrop-blur-md border border-border/50 text-2xl font-serif font-black tracking-tighter uppercase px-6 py-3 rounded-full shadow-sm hover:shadow-md transition-all inline-block"
+    <header className="fixed left-0 right-0 top-0 z-50 border-b border-black/5 bg-white/92 backdrop-blur-sm">
+      <div className="site-container flex h-28 items-center justify-between">
+        <Link
+          href="/"
+          className="relative block h-6 w-16 transition-opacity hover:opacity-70 md:h-7 md:w-20"
+          aria-label="Leon Lee Dorsey home"
         >
-          Dorsey
+          <Image
+            src="/images/dorsey/dorsey-logo.png"
+            alt="DORSEY"
+            fill
+            sizes="112px"
+            className="object-contain object-left"
+            priority
+          />
         </Link>
-      </Magnetic>
-      {/* Desktop Navigation - Floating Pill */}
-      <div className="hidden md:block pointer-events-auto">
-        <div className="bg-background/80 backdrop-blur-md border border-border/50 rounded-full px-2 py-2 shadow-sm flex items-center gap-1">
+
+        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
           <NavigationMenu>
-            <NavigationMenuList className="gap-1">
+            <NavigationMenuList className="gap-5">
               {navigation.map((item) => (
                 <NavigationMenuItem key={item.name}>
-                  <Magnetic>
-                    {item.items ? (
-                      <div className="relative">
-                        <NavigationMenuTrigger className="bg-transparent hover:bg-transparent text-sm font-medium uppercase tracking-wider data-[active]:bg-transparent h-auto py-2 px-4 rounded-full hover:text-primary transition-colors">
+                  {item.items ? (
+                    <div className="relative">
+                      <NavigationMenuTrigger
+                        className={cn(
+                          "h-auto bg-transparent px-0 py-2 text-[13px] font-semibold uppercase tracking-normal text-black hover:bg-transparent hover:text-black focus:bg-transparent data-[state=open]:bg-transparent",
+                          item.items.some((subItem) => pathname === subItem.href) && "text-black"
+                        )}
+                      >
+                        <span className="relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all hover:after:w-full">
                           {item.name}
-                        </NavigationMenuTrigger>
-                        <NavigationMenuContent className="!w-auto">
-                          <ul className="grid w-[200px] gap-1 p-2 bg-background border border-border rounded-xl shadow-xl">
-                            {item.items.map((subItem) => (
-                              <li key={subItem.name}>
-                                <NavigationMenuLink asChild>
-                                  <Link
-                                    href={subItem.href}
-                                    className={cn(
-                                      "block select-none space-y-1 rounded-lg p-3 leading-none no-underline outline-none transition-colors hover:bg-muted hover:text-primary focus:bg-muted focus:text-primary",
-                                      pathname === subItem.href && "bg-muted text-primary font-bold"
-                                    )}
-                                  >
-                                    <div className="text-xs font-bold uppercase tracking-wide">{subItem.name}</div>
-                                  </Link>
-                                </NavigationMenuLink>
-                              </li>
-                            ))}
-                          </ul>
-                        </NavigationMenuContent>
-                      </div>
-                    ) : (
-                      <NavigationMenuLink asChild>
-                        <Link
-                          href={item.href}
-                          className={cn(
-                            "bg-transparent hover:bg-transparent text-sm font-medium uppercase tracking-wider h-auto py-2 px-4 rounded-full hover:text-primary transition-colors block",
-                            pathname === item.href && "text-primary font-bold"
-                          )}
-                        >
-                          {item.name}
-                        </Link>
-                      </NavigationMenuLink>
-                    )}
-                  </Magnetic>
+                        </span>
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent className="!w-auto">
+                        <ul className="grid w-[230px] gap-1 border border-black/10 bg-white p-3 shadow-2xl">
+                          {item.items.map((subItem) => (
+                            <li key={subItem.name}>
+                              <NavigationMenuLink asChild>
+                                <Link
+                                  href={subItem.href}
+                                  className={cn(
+                                    "block px-4 py-3 text-xs font-semibold uppercase tracking-normal text-black transition-colors hover:bg-secondary/25 focus:bg-secondary/25",
+                                    pathname === subItem.href && "bg-secondary/25"
+                                  )}
+                                >
+                                  {subItem.name}
+                                </Link>
+                              </NavigationMenuLink>
+                            </li>
+                          ))}
+                        </ul>
+                      </NavigationMenuContent>
+                    </div>
+                  ) : (
+                    <NavigationMenuLink asChild>
+                      <Link
+                        href={item.href}
+                        className={cn(
+                          "relative block py-2 text-[13px] font-semibold uppercase tracking-normal text-black after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-primary after:transition-all hover:after:w-full",
+                          pathname === item.href && "after:w-full"
+                        )}
+                      >
+                        {item.name}
+                      </Link>
+                    </NavigationMenuLink>
+                  )}
                 </NavigationMenuItem>
               ))}
             </NavigationMenuList>
           </NavigationMenu>
-        </div>
-      </div>
-      {/* Mobile Toggle - Top Right */}
-      <div className="md:hidden pointer-events-auto">
-        <Magnetic>
+        </nav>
+
+        <div className="lg:hidden">
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="rounded-full h-12 w-12 bg-background/80 backdrop-blur-md border-border/50 shadow-sm">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle menu</span>
+              <Button variant="ghost" size="icon" className="h-12 w-12 rounded-none text-black hover:bg-secondary/20">
+                {mobileOpen ? <X className="h-7 w-7" /> : <Menu className="h-9 w-9 stroke-[1.4]" />}
+                <span className="sr-only">Open Menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-full sm:w-[400px] pt-20 bg-background border-l border-border">
-              <nav className="flex flex-col gap-6">
+            <SheetContent
+              side="right"
+              className="!inset-x-0 !bottom-0 !top-0 !w-screen !max-w-none !transition-none data-[state=closed]:!animate-none data-[state=open]:!animate-none border-none bg-white p-0 shadow-none"
+            >
+              <Link
+                href="/"
+                onClick={() => setMobileOpen(false)}
+                className="absolute left-9 top-12 block h-6 w-16"
+                aria-label="Leon Lee Dorsey home"
+              >
+                <Image
+                  src="/images/dorsey/dorsey-logo.png"
+                  alt="DORSEY"
+                  fill
+                  sizes="64px"
+                  className="object-contain object-left"
+                />
+              </Link>
+              <nav className="mx-auto mt-[165px] flex w-full max-w-[320px] flex-col items-center gap-7" aria-label="Mobile navigation">
                 {navigation.map((item) => (
-                  <div key={item.name} className="flex flex-col">
+                  <div key={item.name} className="flex w-full justify-center">
                     {item.items ? (
-                      <div className="space-y-4">
-                        <div className="font-serif font-bold text-2xl opacity-50">{item.name}</div>
-                        <div className="pl-4 flex flex-col space-y-3 border-l border-border ml-2">
-                          {item.items.map((subItem) => (
-                            <Link
-                              key={subItem.name}
-                              href={subItem.href}
-                              onClick={() => setMobileOpen(false)}
-                              className={cn(
-                                "text-lg uppercase tracking-wide transition-colors hover:text-primary hover:translate-x-2 duration-300",
-                                pathname === subItem.href && "text-primary font-bold"
-                              )}
-                            >
-                              {subItem.name}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
+                      <button
+                        type="button"
+                        className="flex items-center justify-center gap-3 text-[40px] font-normal leading-none tracking-normal text-black transition-opacity hover:opacity-70"
+                        aria-label={`${item.name} submenu`}
+                      >
+                        <span>{item.name}</span>
+                        <ChevronRight className="mt-1 h-7 w-7 stroke-[1.2]" />
+                      </button>
                     ) : (
                       <Link
                         href={item.href}
                         onClick={() => setMobileOpen(false)}
-                        className={cn(
-                          "font-serif font-bold text-4xl hover:text-primary transition-colors hover:translate-x-4 duration-300",
-                          pathname === item.href && "text-primary"
-                        )}
+                        className={cn("text-[40px] font-normal leading-none tracking-normal text-black transition-opacity hover:opacity-70")}
                       >
                         {item.name}
                       </Link>
@@ -138,7 +149,7 @@ export function Header() {
               </nav>
             </SheetContent>
           </Sheet>
-        </Magnetic>
+        </div>
       </div>
     </header>
   );

@@ -5,20 +5,19 @@ export const navigation = [
   {
     name: "Press",
     items: [
-      { name: "New Releases", href: "/press/new-releases" },
-      { name: "Press & Reviews", href: "/press/reviews" },
-      { name: "Published Articles", href: "/press/articles" },
-      { name: "FYC", href: "/press/fyc" },
+      { name: "New Releases", href: "/new-releases" },
+      { name: "Press & Reviews", href: "/in-the-press" },
+      { name: "Published Articles", href: "/published-articles" },
+      { name: "FYC", href: "/fyc25" },
     ],
   },
-  { name: "Music", href: "/music" },
+  { name: "Music", href: "/store" },
   {
     name: "Gear",
     items: [
-      { name: "How It's Made", href: "/gear/how-its-made" },
-      { name: "Instruments & Gear", href: "/gear/instruments" },
+      { name: "How It's Made", href: "/how-its-made" },
+      { name: "Instruments & Gear", href: "/gear" },
     ],
   },
   { name: "Contact", href: "/contact" },
 ];
-

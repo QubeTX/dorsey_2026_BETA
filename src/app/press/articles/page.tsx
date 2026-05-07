@@ -1,56 +1,61 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { PressArticle } from "@/components/press/PressArticle";
-
-const articles = [
-  {
-    title: "Jazz Times Feature: The Art of the Bass",
-    date: "November 2023",
-    source: "Jazz Times",
-    excerpt: "Leon Lee Dorsey discusses his approach to the double bass, his influences from the Pittsburgh jazz scene, and his philosophy on music education.",
-    link: "#",
-  },
-  {
-    title: "Berklee Today: Educating the Next Generation",
-    date: "August 2023",
-    source: "Berklee Today",
-    excerpt: "Professor Dorsey shares insights from his classroom and how he bridges the gap between traditional jazz education and the modern music industry.",
-    link: "#",
-  },
-];
 
 export default function ArticlesPage() {
   return (
-    <div className="min-h-screen bg-background pt-32 pb-24">
-      <div className="container mx-auto px-4 max-w-4xl">
-         <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-12 border-b border-border pb-8"
-          >
-            <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-4">
-              Published <span className="text-primary">Articles</span>
-            </h1>
-            <p className="text-xl text-muted-foreground font-serif italic">
-              In-depth features and interviews.
-            </p>
-          </motion.div>
+    <div className="min-h-screen bg-white pt-28">
+      <section className="bg-white">
+        <div className="site-container">
+          <Image
+            src="/images/dorsey/article-new-york.jpg"
+            alt="Leon Lee Dorsey in New York"
+            width={1200}
+            height={850}
+            priority
+            className="h-[42svh] min-h-[320px] w-full object-cover md:h-[56svh]"
+          />
+        </div>
+      </section>
 
-          <div className="space-y-8">
-            {articles.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <PressArticle {...item} />
-              </motion.div>
-            ))}
+      <section className="section-pad bg-white">
+        <div className="site-container">
+          <motion.h1 initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} className="dorsey-heading mb-12 text-[clamp(3rem,8vw,8rem)] text-black/58">
+            Published Articles on Mr. Dorsey
+          </motion.h1>
+          <div className="grid gap-16">
+            <article className="grid gap-8 border-b border-black/15 pb-14 md:grid-cols-[0.45fr_0.55fr] md:items-start">
+              <Image src="/images/dorsey/article-magazine.png" alt="UK Bass Player article spread" width={900} height={700} className="w-full object-cover" />
+              <div className="space-y-5">
+                <h2 className="text-3xl font-black uppercase">UK Bass Player: The Piano Man</h2>
+                <p className="text-lg leading-8 text-black/72">
+                  Sometimes you feel slightly inadequate as a bass journalist. The man has done so much great work in the
+                  field of the low frequencies, alongside such illuminated names, that ordinary gear questions feel
+                  almost inconsequential.
+                </p>
+                <Link href="https://storage.googleapis.com/shaughnessy/DORSEY_FILES/uk_bass_player_article.pdf" className="inline-block bg-black px-6 py-3 text-sm font-black uppercase text-white">
+                  Fullscreen Article
+                </Link>
+              </div>
+            </article>
+            <article className="grid gap-8 md:grid-cols-[0.45fr_0.55fr] md:items-start">
+              <Image src="/images/dorsey/article-screenshot.png" alt="Downbeat article preview" width={900} height={700} className="w-full object-cover" />
+              <div className="space-y-5">
+                <h2 className="text-3xl font-black uppercase">DownBeat - June 2023</h2>
+                <p className="text-lg leading-8 text-black/72">
+                  When it comes to the caliber, variety and release pace of his recordings, heavyweight
+                  bassist/composer/arranger Leon Lee Dorsey is not messing around.
+                </p>
+                <Link href="https://storage.googleapis.com/shaughnessy/DORSEY_FILES/Downbeat_Magazine.pdf" className="inline-block bg-black px-6 py-3 text-sm font-black uppercase text-white">
+                  Fullscreen Article
+                </Link>
+              </div>
+            </article>
           </div>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }
-

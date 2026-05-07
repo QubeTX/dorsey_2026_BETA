@@ -5,7 +5,7 @@ export const albums = [
     year: "2024",
     artist: "Leon Lee Dorsey, Mike Clark, Michael Wolff",
     description: "A heartfelt tribute to the legendary Bill Evans. Joined by the prodigious talents of drummer Mike Clark and pianist Michael Wolff.",
-    image: "/images/hero-1.jpg", // Placeholder
+    image: "/images/dorsey/bill-evans-cover.png",
     link: "/music",
     appleMusic: "https://music.apple.com/us/album/a-letter-to-bill-evans/1734696128",
     spotify: "https://open.spotify.com/album/3rEpYAIMTKszhCs87CsxFH",
@@ -16,7 +16,7 @@ export const albums = [
     year: "2023",
     artist: "Leon Lee Dorsey, Russell Malone, Mike Clark",
     description: "Fresh, soulful, and upbeat jazz experience showcasing Dorsey's exceptional talent as a bassist and bandleader.",
-    image: "/images/hero-2.png", // Placeholder
+    image: "/images/dorsey/cantaloupe-cover.png",
     link: "/music",
     appleMusic: "https://music.apple.com/us/album/cantaloupe-island/1671962177",
   },
@@ -26,7 +26,7 @@ export const albums = [
     year: "2022",
     artist: "Leon Lee Dorsey, Mike Clark, Mike LeDonne",
     description: "Driving straight ahead set that is a hard-swinging classic. A classic piano trio sound.",
-    image: "/images/hero-3.jpg", // Placeholder
+    image: "/images/dorsey/blues-cover.png",
     link: "/music",
   },
   {
@@ -35,7 +35,7 @@ export const albums = [
     year: "2021",
     artist: "Leon Lee Dorsey, Harold Mabern, Mike Clark",
     description: "The album captures a celebration of Mabern’s influences and legacy and stands as an inimitable union of these three consummate players.",
-    image: "/images/hero-4.jpg", // Placeholder
+    image: "/images/dorsey/mabern-cover.png",
     link: "/music",
   },
   {
@@ -44,7 +44,7 @@ export const albums = [
     year: "2020",
     artist: "Leon Lee Dorsey, Michael Wolff, Mike Clark",
     description: "With a clear command of The Beatles’ harmonic language, Wolff, Clark and Dorsey use their own distinct dialects.",
-    image: "/images/hero-1.jpg", // Placeholder
+    image: "/images/dorsey/sgt-pepper-cover.jpg",
     link: "/music",
   },
   {
@@ -53,8 +53,7 @@ export const albums = [
     year: "2019",
     artist: "Leon Lee Dorsey, Mike Clark, Michael Wolff",
     description: "Demonstrates his masterful interpretation of bebop's most challenging compositions.",
-    image: "/images/hero-2.png", // Placeholder
+    image: "/images/dorsey/monktime-cover.jpg",
     link: "/music",
   },
 ];
-

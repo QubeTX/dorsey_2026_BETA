@@ -1,54 +1,54 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
+import Link from "next/link";
 
-const galleryImages = [
-  "/images/hero-1.jpg",
-  "/images/hero-2.png",
-  "/images/hero-3.jpg",
-  "/images/hero-4.jpg",
-  "/images/hero-1.jpg",
-  "/images/hero-2.png",
+const gallery = [
+  "/images/dorsey/made-clamps.jpg",
+  "/images/dorsey/made-body.jpg",
+  "/images/dorsey/made-assembly.png",
+  "/images/dorsey/made-room.jpg",
+  "/images/dorsey/made-finish.jpg",
+  "/images/dorsey/made-polish.jpg",
+  "/images/dorsey/made-garden.jpg",
+  "/images/dorsey/gear-bass-yard.jpg",
 ];
 
 export default function HowItsMadePage() {
   return (
-    <div className="min-h-screen bg-background pt-32 pb-24">
-      <div className="container mx-auto px-4">
-         <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-16 text-center"
-          >
-            <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-4">
-              How It&apos;s <span className="text-primary">Made</span>
-            </h1>
-            <p className="text-xl text-muted-foreground font-serif italic max-w-2xl mx-auto">
-              Behind the scenes in the studio and on the road.
+    <div className="min-h-screen bg-white pt-28">
+      <section className="section-pad bg-white">
+        <div className="site-container grid gap-12 lg:grid-cols-[0.48fr_0.52fr] lg:items-center">
+          <div className="space-y-6">
+            <h1 className="dorsey-heading text-[clamp(3rem,8vw,8rem)]">How It&apos;s Made</h1>
+            <p className="text-xl leading-9 text-black/72">
+              Immerse yourself in the artistic fusion of jazz mastery and artisanal craftsmanship.
             </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {galleryImages.map((src, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="aspect-square relative bg-muted rounded-lg overflow-hidden group"
-              >
-                <Image
-                  src={src}
-                  alt={`Gallery image ${index + 1}`}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-              </motion.div>
+            <p className="text-xl leading-9 text-black/72">
+              Celebrated bassist, <strong>Leon Lee Dorsey</strong>, meets his match in <strong>Seth Kimmel</strong>, a
+              luthier of extraordinary talent from Eugene, Oregon.
+            </p>
+            <p className="text-xl leading-9 text-black/72">
+              Witness the birth of Dorsey&apos;s newest <em>Redwood Upright Bass</em>: a dance of tradition and
+              innovation. This is luxury redefined, a dance of tradition and innovation: it&apos;s how it&apos;s made.
+            </p>
+            <Link href="#gallery" className="inline-block bg-black px-7 py-4 text-sm font-black uppercase text-white hover:bg-primary">
+              Show me
+            </Link>
+          </div>
+          <Image src="/images/dorsey/made-balcony.jpg" alt="Double bass on a balcony" width={900} height={1100} className="w-full object-cover" />
+        </div>
+      </section>
+      <section id="gallery" className="section-pad bg-white">
+        <div className="site-container">
+          <h2 className="dorsey-heading mb-12 text-[clamp(3rem,8vw,8rem)]">How It&apos;s Made</h2>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {gallery.map((src, index) => (
+              <div key={src} className={index % 3 === 0 ? "relative aspect-[3/4] overflow-hidden" : "relative aspect-square overflow-hidden"}>
+                <Image src={src} alt={`Instrument making process ${index + 1}`} fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-cover" />
+              </div>
             ))}
           </div>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }

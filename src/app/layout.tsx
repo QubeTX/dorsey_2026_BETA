@@ -1,22 +1,13 @@
 import type { Metadata } from "next";
-import { Bodoni_Moda, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
-import { CustomCursor } from "@/components/ui/CustomCursor";
-import { Noise } from "@/components/ui/Noise";
 import "./globals.css";
 
 const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
-});
-
-const bodoni = Bodoni_Moda({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -30,15 +21,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <body
-        className={`${inter.variable} ${bodoni.variable} antialiased font-sans bg-background text-foreground flex flex-col min-h-screen selection:bg-primary selection:text-primary-foreground`}
+        className={`${inter.variable} antialiased font-sans bg-background text-foreground flex flex-col min-h-screen selection:bg-primary selection:text-primary-foreground`}
       >
         <SmoothScroll>
-          <Noise />
-          <CustomCursor />
           <Header />
-          <main className="flex-grow pt-20">
+          <main className="flex-grow">
             {children}
           </main>
           <Footer />

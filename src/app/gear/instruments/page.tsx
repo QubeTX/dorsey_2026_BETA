@@ -1,84 +1,53 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
+import Link from "next/link";
 
-const gear = [
-  {
-    name: "David Gage String Instruments",
-    description: "Preferred double bass luthier for maintenance and setup.",
-    link: "http://www.davidgage.com/",
-  },
-  {
-    name: "Thomastik-Infeld Handmade",
-    description: "The strings of choice for Leon Lee Dorsey. Providing the perfect balance of tone and playability.",
-    link: "https://www.thomastik-infeld.com/",
-  },
-  {
-    name: "Fodera Guitars",
-    description: "Custom electric basses crafted for precision and versatility.",
-    link: "https://fodera.com/",
-  },
+const gearLinks = [
+  ["David Gage String Instruments", "http://www.davidgage.com/"],
+  ["Thomastik-Infeld Handsmade", "http://thomastik-infeld.com/"],
+  ["Fodera Guitars", "http://www.fodera.com/"],
+  ["Gallien Krueger", "http://www.gallien-krueger.com/"],
+  ["International Society of Bassists", "http://www.isbworldoffice.com/"],
+  ["Bass Player", "http://www.bassplayer.com/"],
+  ["Jazz Corner", "http://www.jazzcorner.com/"],
 ];
 
 export default function InstrumentsPage() {
   return (
-    <div className="min-h-screen bg-background pt-32 pb-24">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-6 space-y-12">
-             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-            >
-              <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-8">
-                Instruments <br /> <span className="text-primary">& Gear</span>
-              </h1>
-              <p className="text-xl text-muted-foreground font-serif italic mb-12">
-                "Instruments & Gear used by the legendary Leon Lee Dorsey."
-              </p>
-            </motion.div>
-
-            <div className="space-y-8">
-              {gear.map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 + 0.3 }}
-                  className="border-l-4 border-muted pl-6 hover:border-primary transition-colors group"
-                >
-                  <h3 className="text-2xl font-bold uppercase mb-2">
-                    <a href={item.link} target="_blank" rel="noopener noreferrer" className="group-hover:text-primary transition-colors">
-                      {item.name}
-                    </a>
-                  </h3>
-                  <p className="text-muted-foreground">{item.description}</p>
-                </motion.div>
+    <div className="min-h-screen bg-white pt-28">
+      <section className="relative h-[42svh] min-h-[320px] overflow-hidden">
+        <Image src="/images/dorsey/about-slider.jpg" alt="Leon Lee Dorsey banner" fill priority sizes="100vw" className="object-cover" />
+      </section>
+      <section className="section-pad bg-white">
+        <div className="site-container grid gap-12 lg:grid-cols-[0.58fr_0.42fr] lg:items-start">
+          <div>
+            <h1 className="dorsey-heading mb-8 text-[clamp(3rem,8vw,8rem)]">Instruments & Gear</h1>
+            <p className="mb-10 text-xl leading-9 text-black/72">
+              Instruments & Gear used by the legendary <strong>Leon Lee Dorsey</strong>:
+            </p>
+            <ul className="space-y-5">
+              {gearLinks.map(([name, href]) => (
+                <li key={name}>
+                  <a href={href} className="text-2xl font-black uppercase text-primary underline-offset-4 hover:underline">
+                    {name}
+                  </a>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
-
-          <div className="lg:col-span-6 relative h-[600px] md:h-[800px]">
-             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-              className="absolute inset-0"
-             >
-               <div className="relative w-full h-full rounded-lg overflow-hidden bg-muted">
-                 <Image
-                  src="/images/hero-3.jpg" // Placeholder
-                  alt="Bass Guitar Detail"
-                  fill
-                  className="object-cover object-center"
-                 />
-               </div>
-             </motion.div>
+          <div className="grid gap-5">
+            <Image src="/images/dorsey/gear-case.jpg" alt="Instrument case" width={800} height={900} className="w-full object-cover" />
+            <Image src="/images/dorsey/gear-bass-yard.jpg" alt="Double bass outdoors" width={800} height={900} className="w-full object-cover" />
           </div>
         </div>
-      </div>
+      </section>
+      <section className="bg-black py-20 text-white dark-circle-pattern">
+        <div className="site-container flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
+          <h2 className="dorsey-heading text-5xl md:text-7xl">Got questions?</h2>
+          <Link href="/contact" className="bg-white px-8 py-4 text-sm font-black uppercase text-black hover:bg-primary hover:text-white">
+            Get in Touch with Mr. Dorsey&apos;s Team
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }
-

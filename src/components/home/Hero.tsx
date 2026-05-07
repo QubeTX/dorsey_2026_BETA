@@ -1,138 +1,111 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import Link from "next/link";
+import { motion, useReducedMotion } from "framer-motion";
 import { Marquee } from "@/components/ui/marquee";
 
+const roles = "BASSIST & COMPOSER & ARRANGER & PRODUCER & VIRTUOSO & EDUCATOR &";
+
 export function Hero() {
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 1000], [0, 200]);
-  const y2 = useTransform(scrollY, [0, 1000], [0, -150]);
-  const textY = useTransform(scrollY, [0, 500], [0, 100]);
+  const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-background text-foreground">
+    <>
+      <section className="relative min-h-[calc(100svh+80px)] overflow-hidden bg-white pt-20 circle-pattern">
+        <div className="absolute left-0 top-[21vh] w-full overflow-hidden">
+          <Marquee speed={reduceMotion ? 0 : 22} className="dorsey-heading text-[clamp(4.8rem,12vw,12rem)] whitespace-nowrap text-black">
+            <span className="mx-6">{roles}</span>
+          </Marquee>
+        </div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="site-container relative min-h-[calc(100svh-80px)]"
+        >
+          <div className="absolute left-9 top-[33vh] z-20 max-w-[680px] md:left-10 md:top-[37vh]">
+            <p className="mb-6 text-base uppercase tracking-normal md:text-lg">NOW INTRODUCING,</p>
+            <h1 className="dorsey-heading sketch-underline text-[clamp(2.6rem,6vw,5.9rem)]">
+              LEON LEE DORSEY
+            </h1>
+          </div>
 
-      {/* Marquee Top - Skewed */}
-      <motion.div
-        className="absolute top-32 left-0 w-full z-10 origin-left -rotate-2 mix-blend-difference text-background"
-        style={{ x: y2 }}
-      >
-        <Marquee speed={30} className="font-serif italic font-bold text-2xl md:text-4xl tracking-tighter opacity-50">
-          <span className="mx-8">Virtuoso</span> •
-          <span className="mx-8">Composer</span> •
-          <span className="mx-8">Educator</span> •
-          <span className="mx-8">Legend</span> •
-          <span className="mx-8">Bassist</span> •
-        </Marquee>
-      </motion.div>
-
-      <div className="container mx-auto px-4 relative z-20">
-        <div className="relative h-[60vh] md:h-[80vh] flex flex-col justify-center items-center">
-
-          {/* Main Typography - Massive & Overlapping */}
-          {/* Base Layer - Visibility Safety */}
           <motion.div
-            style={{
-              y: textY,
-              textShadow: '0 0 60px rgba(255,255,255,0.8), 0 0 120px rgba(255,255,255,0.4)'
-            }}
-            className="absolute inset-0 z-20 flex flex-col justify-center items-center text-center text-foreground opacity-80 pointer-events-none select-none"
-          >
-            <motion.h1
-              initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-              className="text-[15vw] md:text-[18vw] font-serif font-black leading-[0.8] tracking-tighter uppercase"
-            >
-              Leon
-            </motion.h1>
-            <motion.h1
-              initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="text-[15vw] md:text-[18vw] font-serif font-black leading-[0.8] tracking-tighter uppercase ml-[10vw]"
-            >
-              Dorsey
-            </motion.h1>
-          </motion.div>
-
-          {/* Top Layer - Blend Effect */}
-          <motion.div
-            style={{ y: textY }}
-            className="relative z-30 text-center mix-blend-difference text-background"
-          >
-            <motion.h1
-              initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-              className="text-[15vw] md:text-[18vw] font-serif font-black leading-[0.8] tracking-tighter uppercase"
-            >
-              Leon
-            </motion.h1>
-            <motion.h1
-              initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="text-[15vw] md:text-[18vw] font-serif font-black leading-[0.8] tracking-tighter uppercase ml-[10vw]"
-            >
-              Dorsey
-            </motion.h1>
-          </motion.div>
-
-          {/* Parallax Images */}
-          <motion.div
-            style={{ y: y1 }}
-            className="absolute top-0 left-[10%] w-[30vw] aspect-[3/4] z-10 opacity-80 grayscale mix-blend-multiply dark:mix-blend-screen"
+            className="absolute left-[8%] top-[47vh] hidden w-[26vw] max-w-[350px] overflow-hidden md:block"
+            initial={{ opacity: 0, rotate: -4, y: 40 }}
+            animate={{ opacity: 1, rotate: -2, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
           >
             <Image
-              src="/images/hero-3.jpg"
-              alt="Leon Lee Dorsey"
-              fill
-              className="object-cover"
-            />
-          </motion.div>
-
-          <motion.div
-            style={{ y: y2 }}
-            className="absolute bottom-0 right-[10%] w-[25vw] aspect-square z-10 opacity-80 grayscale mix-blend-multiply dark:mix-blend-screen"
-          >
-            <Image
-              src="/images/hero-1.jpg"
-              alt="Performance"
-              fill
-              className="object-cover"
-            />
-          </motion.div>
-
-          {/* Center Focus Image */}
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1.2, delay: 0.2, ease: "circOut" }}
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[20vw] h-[20vw] z-20 rounded-full overflow-hidden border-4 border-background/20"
-          >
-            <Image
-              src="/images/hero-4.jpg"
-              alt="Portrait"
-              fill
-              className="object-cover"
+              src="/images/dorsey/freedom-jazz-dance.png"
+              alt="Leon Lee Dorsey with collaborators"
+              width={700}
+              height={700}
+              className="h-auto w-full object-cover"
               priority
             />
           </motion.div>
 
-        </div>
-      </div>
+          <motion.div
+            className="absolute right-[9%] top-[40vh] z-10 hidden w-[30vw] max-w-[440px] overflow-hidden rounded-full md:block"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.35, duration: 0.8 }}
+          >
+            <Image
+              src="/images/dorsey/white-house.jpg"
+              alt="Leon Lee Dorsey performing at the White House"
+              width={1000}
+              height={567}
+              className="aspect-square w-full object-cover"
+              priority
+            />
+          </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-        className="absolute bottom-8 left-8 text-xs font-bold uppercase tracking-widest [writing-mode:vertical-rl] mix-blend-difference text-background"
-      >
-        Scroll to Explore
-      </motion.div>
-    </section>
+          <motion.div
+            className="absolute bottom-[6vh] right-[7%] z-20 hidden w-[18vw] max-w-[260px] overflow-hidden md:block"
+            initial={{ opacity: 0, rotate: 5, y: 28 }}
+            animate={{ opacity: 1, rotate: 3, y: 0 }}
+            transition={{ delay: 0.45, duration: 0.8 }}
+          >
+            <Image
+              src="/images/dorsey/monktime-rooftop.jpeg"
+              alt="Leon Lee Dorsey trio rooftop portrait"
+              width={700}
+              height={467}
+              className="aspect-[4/3] w-full object-cover"
+            />
+          </motion.div>
+
+          <p className="absolute bottom-10 right-6 text-right text-sm font-black uppercase tracking-normal md:right-10 md:text-lg">
+            Multitalented
+            <br />
+            Jazz Icon
+          </p>
+        </motion.div>
+      </section>
+
+      <section className="section-pad bg-white">
+        <div className="site-container grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:items-center">
+          <h2 className="dorsey-heading text-4xl md:text-6xl">About Mr. Dorsey</h2>
+          <div className="space-y-6 text-lg leading-8 text-black/78 md:text-xl md:leading-9">
+            <p>
+              <strong>Leon Lee Dorsey</strong> has built an illustrious career marked by his proficiency in various
+              aspects of music. His work as a <em>bassist, composer, arranger, producer, and educator</em> echoes his
+              multifaceted abilities and profound understanding of the jazz genre.
+            </p>
+            <p>
+              From his initial steps in Pittsburgh&apos;s vibrant jazz scene to his impactful contributions as a professor
+              at the Berklee School of Music, Dorsey continues to inspire and innovate.
+            </p>
+            <Link href="/about" className="inline-block font-semibold italic underline decoration-primary decoration-2 underline-offset-4">
+              Read more on Leon Lee Dorsey.
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

@@ -3,89 +3,72 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+
+const maiselImages = [
+  { src: "/images/dorsey/maisel-selfie.jpg", alt: "Leon Lee Dorsey on the Maisel set" },
+  { src: "/images/dorsey/maisel-band.jpg", alt: "The Gordon Ford Band on stage" },
+  { src: "/images/dorsey/maisel-set.jpg", alt: "Studio performance setup" },
+  { src: "/images/dorsey/maisel-room.jpg", alt: "Musicians seated on the Maisel set" },
+];
 
 export function MaiselFeature() {
   return (
-    <section className="py-32 bg-foreground text-background relative overflow-hidden">
-      
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          {/* Content */}
-          <div className="order-2 lg:order-1 space-y-12">
+    <section className="bg-white section-pad">
+      <div className="site-container">
+        <div className="border border-black/10 bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.08)] md:p-12">
+          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
+              className="space-y-8"
             >
-              <h3 className="text-2xl md:text-3xl font-serif italic text-primary mb-4">
-                As seen on
-              </h3>
-              <h2 className="text-6xl md:text-8xl font-serif font-black uppercase tracking-tighter leading-[0.9] mb-8 text-background">
-                The Marvelous <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-400">
+              <div>
+                <p className="mb-4 text-2xl font-semibold italic md:text-4xl">See Mr. Dorsey on:</p>
+                <h2 className="dorsey-heading sketch-underline text-[clamp(3rem,6vw,6.8rem)] text-primary">
+                  The Marvelous
+                  <br />
                   Mrs. Maisel
-                </span>
-              </h2>
-              <div className="w-32 h-1 bg-primary" />
+                </h2>
+              </div>
+              <p className="text-lg leading-8 text-black/72">
+                Leon Lee Dorsey appears in the fifth season of the acclaimed series as a member of the Gordon Ford Band,
+                adding a dynamic layer of musical storytelling to the production.
+              </p>
+              <p className="text-lg font-bold leading-8">
+                Make sure not to miss his performance that&apos;s bound to strike a chord with fans of the series and music
+                lovers alike.
+              </p>
+              <Link
+                href="https://www.amazon.com/gp/video/detail/B0B7F6XRGS"
+                target="_blank"
+                className="inline-block bg-black px-7 py-4 text-sm font-black uppercase text-white transition-colors hover:bg-primary"
+              >
+                See More
+              </Link>
             </motion.div>
 
-            <motion.p 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="text-xl md:text-2xl leading-relaxed font-light text-background/80"
-            >
-              Season 5 features Leon Lee Dorsey as a member of the <span className="font-bold text-primary">Gordon Ford Band</span>, bringing authentic jazz soul to the acclaimed series.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-            >
-              <Button asChild variant="outline" size="lg" className="border-2 border-background text-background hover:bg-primary hover:text-foreground hover:border-primary rounded-full text-lg px-10 py-8 uppercase tracking-widest font-bold transition-all">
-                <Link href="https://www.amazon.com/gp/video/detail/B0B7F6XRGS" target="_blank">
-                  Watch Now <ArrowUpRight className="ml-2 w-6 h-6" />
-                </Link>
-              </Button>
-            </motion.div>
-          </div>
-
-          {/* Cinematic Image */}
-          <div className="order-1 lg:order-2 relative aspect-video w-full group perspective-1000">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, rotateY: 10 }}
-              whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, ease: "circOut" }}
-              className="relative w-full h-full rounded-sm overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-4 border-background/10"
-            >
-              <Image 
-                src="/images/hero-3.jpg" 
-                alt="On set of Mrs. Maisel" 
-                fill 
-                className="object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-1000"
-              />
-              
-              {/* Film Grain Overlay */}
-              <div className="absolute inset-0 bg-black/20 mix-blend-overlay pointer-events-none" />
-            </motion.div>
-            
-            {/* Floating Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-              className="absolute -bottom-10 -right-10 bg-primary text-foreground p-6 rounded-full w-32 h-32 flex items-center justify-center text-center font-serif font-black leading-none shadow-xl rotate-12"
-            >
-              Season <br /> 5
-            </motion.div>
+            <div className="grid grid-cols-2 gap-4">
+              {maiselImages.map((image, index) => (
+                <motion.div
+                  key={image.src}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.08, duration: 0.55 }}
+                  className={index % 2 === 0 ? "relative aspect-[4/3] overflow-hidden" : "relative aspect-[3/4] overflow-hidden"}
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes="(min-width: 1024px) 28vw, 45vw"
+                    className="object-cover"
+                  />
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
